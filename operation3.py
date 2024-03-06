@@ -21,9 +21,9 @@ for item in df['newindex'].unique().tolist():
     df_1 = df.loc[df["newindex"]== item,].copy()
 
     # sample1 = df_1.loc[df_1['sample'] == "T2P2-A-ZDH-" + item,].copy() 
-    sample1 = df_1.loc[df_1['sample'] == "T2P2-B-ZDH-" + item,].copy() 
-    sample2 = df_1.loc[df_1['sample'] == "T2P2-SD-" + item,].copy()   #T2P2-SD-56
-    sample3 = df_1.loc[df_1['sample'] == "T2P2-A-ZDH-" + item,].copy()
+    sample1 = df_1.loc[df_1['sample'] == "T2P2-A-ZDH-" + item,].copy() 
+    sample2 = df_1.loc[df_1['sample'] == "T2P2-B-ZDH-" + item,].copy()   #T2P2-SD-56
+    sample3 = df_1.loc[df_1['sample'] == "T2P2-SD-" + item,].copy()
     index2 = ["sample","原始数据量","样品浓度","质控合格比例","Q30","质控情况","建库方式","filter_flag",'patho_namezn']
     # sample1_A= sample1[index2].drop_duplicates()
     # sample2_A= sample2[index2].drop_duplicates()
@@ -84,23 +84,23 @@ for item in df['newindex'].unique().tolist():
 
 
 
-        new_df.at[(patho, item),"sample_c"] = sample3_2['sample'].iloc[0]
-        new_df.at[(patho, item),"原始数据量_c"] = sample3_2['原始数据量'].iloc[0]
-        new_df.at[(patho, item),"样品浓度_c"] = sample3_2['样品浓度'].iloc[0]
-        new_df.at[(patho, item),"质控合格比例_c"] = sample3_2['质控合格比例'].iloc[0]
-        new_df.at[(patho, item),"Q30_c"] = sample3_2['Q30'].iloc[0]
-        new_df.at[(patho, item),"质控情况_c"] = sample3_2['质控情况'].iloc[0]
-        new_df.at[(patho, item),"建库方式_c"] = sample3_2['建库方式'].iloc[0]
+        new_df.at[(patho, item),"sample_C"] = sample3_2['sample'].iloc[0]
+        new_df.at[(patho, item),"原始数据量_C"] = sample3_2['原始数据量'].iloc[0]
+        new_df.at[(patho, item),"样品浓度_C"] = sample3_2['样品浓度'].iloc[0]
+        new_df.at[(patho, item),"质控合格比例_C"] = sample3_2['质控合格比例'].iloc[0]
+        new_df.at[(patho, item),"Q30_C"] = sample3_2['Q30'].iloc[0]
+        new_df.at[(patho, item),"质控情况_C"] = sample3_2['质控情况'].iloc[0]
+        new_df.at[(patho, item),"建库方式_C"] = sample3_2['建库方式'].iloc[0]
 
         try:
-            new_df.at[(patho, item),"filter_flag_c"] = sample3_A['filter_flag'].iloc[0]     ###这里有问题：列表中的第一个？
-            print (sample3_A)
+            new_df.at[(patho, item),"filter_flag_C"] = sample3_A['filter_flag'].iloc[0]     ###这里有问题：列表中的第一个？
+            # print (sample3_A)
         except IndexError:
-            new_df.at[(patho, item),"filter_flag_c"] = "/"
+            new_df.at[(patho, item),"filter_flag_C"] = "/"
         try:
-            new_df.at[(patho, item),"RPK_c"] = sample1.loc[sample1['patho_namezn']==patho,]['patho_RPK'].iloc[0]
+            new_df.at[(patho, item),"RPK_C"] = sample3.loc[sample3['patho_namezn']==patho,]['patho_RPK'].iloc[0]
         except IndexError:
-            new_df.at[(patho, item),"RPK_c"] = 0
+            new_df.at[(patho, item),"RPK_C"] = 0
 
         # if item == "75" and patho == "大肠埃希菌":
         #     print('hi')
